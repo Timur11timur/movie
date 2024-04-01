@@ -79,24 +79,26 @@ class MoviesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             if ($imagePath) {
                 if ($movie->getImagePath() !== null) {
-                    if (file_exists($this->getParameter('kernel.project_dir') . '/public' . $movie->getImagePath())) {
-                        $newFileName = uniqid() . '.' . $imagePath->guessExtension();
+                    //Delete file
+                }
 
-                        try {
-                            $imagePath->move(
-                                $this->getParameter('kernel.project_dir') . '/public/uploads',
-                                $newFileName
-                            );
-                        } catch (FileException $e) {
-                            return new Response($e->getMessage());
-                        }
+                if (file_exists($this->getParameter('kernel.project_dir') . '/public' . $movie->getImagePath())) {
+                    $newFileName = uniqid() . '.' . $imagePath->guessExtension();
 
-                        $movie->setImagePath('/uploads/' . $newFileName);
-
-                        $this->em->flush();
-
-                        return $this->redirectToRoute('app_movies');
+                    try {
+                        $imagePath->move(
+                            $this->getParameter('kernel.project_dir') . '/public/uploads',
+                            $newFileName
+                        );
+                    } catch (FileException $e) {
+                        return new Response($e->getMessage());
                     }
+
+                    $movie->setImagePath('/uploads/' . $newFileName);
+
+                    $this->em->flush();
+
+                    return $this->redirectToRoute('app_movies');
                 }
             } else {
                 $movie->setTitle($form->get('title')->getData());
@@ -115,6 +117,15 @@ class MoviesController extends AbstractController
         ]);
     }
 
+    #[Route('/movies/delete/{id}', name: 'app_movies_delete', methods: ['GET', 'DELETE'])]
+    public function delete($id): Response
+    {
+        $movie = $this->movieRepository->find($id);
+        $this->em->remove($movie);
+        $this->em->flush();
+
+        return $this->redirectToRoute('app_movies');
+    }
 
     #[Route('/movies/{id}', name: 'app_movies_show', methods: ['GET'])]
     public function show($id): Response
