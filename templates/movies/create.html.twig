@@ -6,9 +6,9 @@
 
 {% block body %}
     <h1>Create a Movie</h1>
-    <a href="/movies">Back</a>
+    <a href="/movies" class="bg-amber-300 p-2">Back</a>
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <button type="submit">Save</button>
+        <button type="submit" class="bg-green-700 p-2">Save</button>
     {{ form_end(form) }}
 {% endblock %}

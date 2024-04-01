@@ -6,9 +6,10 @@
 
 {% block body %}
     <h1>One Movie</h1>
-    <a href="/movies">Back</a>
+    <a href="/movies" class="bg-amber-300 p-2">Back</a>
     <p>Title: {{ movie.title }}</p>
     <p>Release Year: {{ movie.releaseYear }}</p>
-    <p>Description: { movie.description }}</p>
+    <p>Description: {{ movie.description }}</p>
     <img src="{{ movie.imagePath }}" alt="">
+    <a href="/movies/edit/{{ movie.id }}" class="bg-green-500 p-2">Edit</a>
 {% endblock %}

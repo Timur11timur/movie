@@ -1,13 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    Movies Page
+    Edit the Movie
 {% endblock %}
 
 {% block body %}
-    <h1 class="bg-blue-500">Movies Page</h1>
-    <img src="{{ asset('build/images/image1.jpg') }}" alt="">
-    {% for movie in movies %}
-        <li>{{ movie.title }}</li>
-    {% endfor %}
+    <h1>Edit the Movie</h1>
+    <a href="/movies" class="bg-amber-300 p-2">Back</a>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="bg-green-700 p-2">Save changes</button>
+    {{ form_end(form) }}
 {% endblock %}

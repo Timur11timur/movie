@@ -42,6 +42,8 @@ class MovieFormType extends AbstractType
                     'class' => 'bg-transparent block border',
                 ],
                 'label' => false,
+                'required' => false,
+                'mapped' => false,
             ])
 //            ->add('actors', EntityType::class, [
 //                'class' => Actor::class,

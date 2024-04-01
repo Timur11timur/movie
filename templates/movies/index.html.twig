@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1>All Movies</h1>
-    <a href="/movies/create">Create</a>
+    <a href="/movies/create" class="bg-blue-400 p-2">Create</a>
     {% for movie in movies %}
         <li><a href="/movies/{{ movie.id }}">{{ movie.title }}</a></li>
     {% endfor %}
