@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block body %}
+    <h1>Movies Page</h1>
     {% for movie in movies %}
-        <li>{{ movie }}</li>
+        <li>{{ movie.title }}</li>
     {% endfor %}
 {% endblock %}

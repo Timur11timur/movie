@@ -22,9 +22,9 @@ class MoviesController extends AbstractController
         $count = $repository->count([]);
         $name = $repository->getClassName();
 
-        dd($movies);
+//        dd($movies);
 
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', compact('movies'));
     }
 
     #[Route('/movies2', name: 'app_movies2')]
