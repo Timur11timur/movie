@@ -6,6 +6,7 @@
 
 {% block body %}
     <h1 class="bg-blue-500">Movies Page</h1>
+    <img src="{{ asset('build/images/image1.jpg') }}" alt="">
     {% for movie in movies %}
         <li>{{ movie.title }}</li>
     {% endfor %}
