@@ -15,6 +15,9 @@
         {% endblock %}
     </head>
     <body>
+        <div>
+            <a href="/{{ app.user ? 'logout' : 'login' }}">{{ app.user ? 'Logout' : 'Login' }}</a>
+        </div>
         {% block body %}{% endblock %}
     </body>
 </html>
