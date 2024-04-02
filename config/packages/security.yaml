@@ -40,7 +40,10 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+#         - { path: ^/movies/create, roles: ROLE_USER }
+         - { path: ^/movies/create, roles: ROLE_USER }
+         - { path: ^/movies/edit, roles: ROLE_USER }
+         - { path: ^/movies/delete, roles: ROLE_USER }
 
 when@test:
     security:

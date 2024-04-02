@@ -11,6 +11,8 @@
     <p>Release Year: {{ movie.releaseYear }}</p>
     <p>Description: {{ movie.description }}</p>
     <img src="{{ movie.imagePath }}" alt="">
-    <a href="/movies/edit/{{ movie.id }}" class="bg-green-500 p-2">Edit</a>
-    <a href="/movies/delete/{{ movie.id }}" class="bg-red-500 p-2 ml-2">Delete</a>
+    {% if app.user %}
+        <a href="/movies/edit/{{ movie.id }}" class="bg-green-500 p-2">Edit</a>
+        <a href="/movies/delete/{{ movie.id }}" class="bg-red-500 p-2 ml-2">Delete</a>
+    {% endif %}
 {% endblock %}
